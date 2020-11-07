@@ -31,7 +31,21 @@ class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        Log.i(TAG, "Creating database");
+        Log.i(TAG, "onCreate: Creating new database");
+        createVersion1(db);
+        doMigrationVersion1to2(db);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        Log.i(TAG, "onUpgrade: Upgrading database if necessary. See following log statements.");
+        if (oldVersion == 1 && newVersion == 2) {
+            doMigrationVersion1to2(db);
+        }
+    }
+
+    private void createVersion1(SQLiteDatabase db) {
+        Log.i(TAG, "Creating version 1");
         db.execSQL(DbContract.SignTable.CREATE);
         db.execSQL("INSERT INTO signs (name, name_de, mnemonic, learning_progress, starred) VALUES ( 'afterwards', 'Dann/Danach', 'Die Zukunft liegt vor mir', 0, 0)");
         db.execSQL("INSERT INTO signs (name, name_de, mnemonic, learning_progress, starred) VALUES ( 'again', 'Noch mal', 'Gebärde \"eins\" kommt von hinten nach vorn', 0, 0)");
@@ -243,14 +257,6 @@ class DbHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO signs (name, name_de, mnemonic, learning_progress, starred) VALUES ( 'you', 'Du', 'mit Zeigefinger auf Gegenüber zeigen', 0, 0)");
         db.execSQL("INSERT INTO signs (name, name_de, mnemonic, learning_progress, starred) VALUES ( 'you_help_me', 'Du Hilfst Mir', '2. Hand hilft der anderen', 0, 0)");
         db.execSQL("INSERT INTO signs (name, name_de, mnemonic, learning_progress, starred) VALUES ( 'yours', 'Dein', 'Handfläche zeigt langsam auf Gesprächspartner', 0, 0)");
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.i(TAG, "Upgrading database");
-        if (newVersion == 2) {
-            doMigrationVersion1to2(db);
-        }
     }
 
     private void doMigrationVersion1to2(SQLiteDatabase db) {
