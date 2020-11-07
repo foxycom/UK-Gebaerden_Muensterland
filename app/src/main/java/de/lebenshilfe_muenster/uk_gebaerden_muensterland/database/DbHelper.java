@@ -31,6 +31,7 @@ class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        Log.i(TAG, "Creating database");
         db.execSQL(DbContract.SignTable.CREATE);
         db.execSQL("INSERT INTO signs (name, name_de, mnemonic, learning_progress, starred) VALUES ( 'afterwards', 'Dann/Danach', 'Die Zukunft liegt vor mir', 0, 0)");
         db.execSQL("INSERT INTO signs (name, name_de, mnemonic, learning_progress, starred) VALUES ( 'again', 'Noch mal', 'Gebärde \"eins\" kommt von hinten nach vorn', 0, 0)");
@@ -137,7 +138,7 @@ class DbHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO signs (name, name_de, mnemonic, learning_progress, starred) VALUES ( 'jesus', 'Jesus', 'Mittelfinger tippen auf Nagelmale', 0, 0)");
         db.execSQL("INSERT INTO signs (name, name_de, mnemonic, learning_progress, starred) VALUES ( 'juice', 'Saft', 'Saft läuft aus gepresster Frucht', 0, 0)");
         db.execSQL("INSERT INTO signs (name, name_de, mnemonic, learning_progress, starred) VALUES ( 'jump', 'Springen/Hüpfen', 'Zeige-und Mittelfinger hüpfen auf Handfläche', 0, 0)");
-        db.execSQL("INSERT INTO signs (name, name_de, mnemonic, learning_progress, starred) VALUES ( 'kindergarden', '\"Kindergarten\", \"Kinder\" und \"Garten\" zeigen', 0, 0)");
+        db.execSQL("INSERT INTO signs (name, name_de, mnemonic, learning_progress, starred) VALUES ( 'kindergarden', '\"Kindergarten\"',' \"Kinder\" und \"Garten\" zeigen', 0, 0)");
         db.execSQL("INSERT INTO signs (name, name_de, mnemonic, learning_progress, starred) VALUES ( 'kitchen', 'Küche', 'Erst \"kochen\" dann \"Zimmer\"', 0, 0)");
         db.execSQL("INSERT INTO signs (name, name_de, mnemonic, learning_progress, starred) VALUES ( 'knife', 'Messer/Schneiden', 'Beide Zeigefinger schneiden', 0, 0)");
         db.execSQL("INSERT INTO signs (name, name_de, mnemonic, learning_progress, starred) VALUES ( 'lamp', 'Licht/Lampe', 'Strahlende Lampe seitlich oben neben Kopf', 0, 0)");
@@ -246,6 +247,7 @@ class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        Log.i(TAG, "Upgrading database");
         if (newVersion == 2) {
             doMigrationVersion1to2(db);
         }
