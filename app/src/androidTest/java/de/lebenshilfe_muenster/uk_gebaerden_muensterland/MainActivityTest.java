@@ -71,8 +71,6 @@ public class MainActivityTest {
         onView(withText(R.string.train_signs_passive)).check((matches(allOf(isDisplayed(), isEnabled()))));
         onView(withText(R.string.train_signs_active)).check((matches(allOf(isDisplayed(), isEnabled()))));
         onView(withText(R.string.about_signs)).check((matches(allOf(isDisplayed(), isEnabled()))));
-        // #54 Disabled because the settings view is not used right now.
-        // onView(withText(R.string.settings)).check((matches(allOf(isDisplayed(), isEnabled()))));
         pressBack(); // close navigation drawer because there are no fragments in the back stack.
     }
 
@@ -95,12 +93,6 @@ public class MainActivityTest {
     public void clickAboutSignsButton() {
         clickNavigationButtonAndCheckToolbarTitle((R.string.about_signs), R.string.about_signs);
     }
-
-    // #54 Disabled because the settings view is not used right now.
-    //    @Test
-    //    public void clickSettingsButton() {
-    //        clickNavigationButtonAndCheckToolbarTitle((R.string.settings), R.string.settings);
-    //    }
 
     @Test
     public void testBackNavigation() {

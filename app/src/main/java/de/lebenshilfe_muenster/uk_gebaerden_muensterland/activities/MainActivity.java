@@ -143,10 +143,6 @@ public class MainActivity extends AppCompatActivity
         } else if (R.id.nav_sign_info == id) {
             showAboutSigns();
         }
-        // #54 Settings view currently deactivated.
-        //        else if (R.id.nav_sign_settings == id) {
-        //            showSettings();
-        //        }
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         Validate.notNull(drawer);
         drawer.closeDrawer(GravityCompat.START);
@@ -212,13 +208,6 @@ public class MainActivity extends AppCompatActivity
         intent.putExtra(LevelOneActivity.EXTRA, bundle);
         startActivity(intent);
     }
-
-    // #54 Disabled because the settings view is not used right now.
-    //    private void showSettings() {
-    //        Log.d(TAG, "showSettings() " + hashCode());
-    //        setFragment(new SettingsFragment(), SETTINGS_TAG);
-    //        setActionBarTitle(getString(R.string.settings));
-    //    }
 
     private void showAboutSigns() {
         Log.d(TAG, "showAboutSigns() " + hashCode());
