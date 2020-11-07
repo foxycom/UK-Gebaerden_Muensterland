@@ -3,7 +3,6 @@ package de.lebenshilfe_muenster.uk_gebaerden_muensterland.sign_browser;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,7 @@ import org.apache.commons.lang3.Validate;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import androidx.recyclerview.widget.RecyclerView;
 import de.lebenshilfe_muenster.uk_gebaerden_muensterland.R;
 import de.lebenshilfe_muenster.uk_gebaerden_muensterland.database.Sign;
 import de.lebenshilfe_muenster.uk_gebaerden_muensterland.database.SignDAO;

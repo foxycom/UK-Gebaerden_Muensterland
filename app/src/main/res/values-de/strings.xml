@@ -33,7 +33,7 @@
     <string name="answer">Antwort</string>
     <string name="trainerMnemonic">Eselbrücke</string>
     <string name="tags">Stichworte</string>
-    <string name="versionName">Version: 1.2.0-BETA</string>
+    <string name="versionName">Version: 1.2.1</string>
     <string name="progress">Fortschritt</string>
     <string name="signTrainerExplanation">\'Einfach\': Lernfortschritt +1, \'Schwer\': -1.</string>
     <string name="action_toggle_learning_mode">Modus wechseln</string>

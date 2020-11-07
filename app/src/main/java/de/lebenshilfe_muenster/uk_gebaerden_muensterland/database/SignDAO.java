@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.annotation.NonNull;
 import android.util.Log;
 
 import org.apache.commons.lang3.StringUtils;
@@ -17,6 +16,8 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
+
+import androidx.annotation.NonNull;
 
 import static de.lebenshilfe_muenster.uk_gebaerden_muensterland.database.DbContract.BOOLEAN_TRUE;
 import static de.lebenshilfe_muenster.uk_gebaerden_muensterland.database.DbContract.EQUAL_SIGN;

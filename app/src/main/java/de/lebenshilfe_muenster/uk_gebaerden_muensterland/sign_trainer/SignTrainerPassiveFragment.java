@@ -1,7 +1,6 @@
 package de.lebenshilfe_muenster.uk_gebaerden_muensterland.sign_trainer;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -10,6 +9,7 @@ import android.view.ViewGroup;
 
 import org.apache.commons.lang3.Validate;
 
+import androidx.annotation.Nullable;
 import de.lebenshilfe_muenster.uk_gebaerden_muensterland.R;
 import de.lebenshilfe_muenster.uk_gebaerden_muensterland.database.Sign;
 import de.lebenshilfe_muenster.uk_gebaerden_muensterland.sign_video_view.VideoSetupException;

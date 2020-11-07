@@ -1,8 +1,5 @@
 package de.lebenshilfe_muenster.uk_gebaerden_muensterland.sign_browser;
 
-import android.support.annotation.NonNull;
-import android.support.test.rule.ActivityTestRule;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import org.apache.commons.lang3.Validate;
@@ -11,14 +8,17 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.junit.Rule;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.test.rule.ActivityTestRule;
 import de.lebenshilfe_muenster.uk_gebaerden_muensterland.R;
 import de.lebenshilfe_muenster.uk_gebaerden_muensterland.activities.MainActivity;
 
-import static android.support.test.espresso.matcher.ViewMatchers.hasSibling;
-import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withParent;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static androidx.test.espresso.matcher.ViewMatchers.hasSibling;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withParent;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.containsString;
 

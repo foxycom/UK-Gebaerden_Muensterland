@@ -1,8 +1,5 @@
 package de.lebenshilfe_muenster.uk_gebaerden_muensterland.database;
 
-import android.support.annotation.NonNull;
-import android.support.test.rule.ActivityTestRule;
-import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 
 import org.apache.commons.lang3.time.StopWatch;
@@ -17,6 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import androidx.annotation.NonNull;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.rule.ActivityTestRule;
 import de.lebenshilfe_muenster.uk_gebaerden_muensterland.TestConstants;
 import de.lebenshilfe_muenster.uk_gebaerden_muensterland.activities.MainActivity;
 
