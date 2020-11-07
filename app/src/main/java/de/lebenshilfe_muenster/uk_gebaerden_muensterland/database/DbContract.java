@@ -32,6 +32,7 @@ class DbContract {
     static abstract class SignTable implements BaseColumns {
 
         static final String TABLE_NAME = "signs";
+        static final String CREATE = "create table signs (\"_id\" INTEGER not null primary key autoincrement, name TEXT not null unique, name_de TEXT not null, mnemonic TEXT not null, learning_progress INTEGER default 0 not null, starred INTEGER default 0 not null)";
         static final String COLUMN_NAME_SIGN_NAME = "name";
         static final String COLUMN_NAME_SIGN_NAME_DE = "name_de";
         static final String COLUMN_NAME_MNEMONIC = "mnemonic";
