@@ -172,12 +172,12 @@ public class SignSearchTest extends AbstractSignBrowserTest {
     private void performSearch(String query) {
         Log.d(TAG, "Perform search");
         onView(withId(R.id.action_search)).check(matches(isDisplayed())).perform(click());
-        onView(withId(android.support.design.R.id.search_src_text)).check(matches(isDisplayed())).perform(typeText(query + ENTER));
+        onView(withId(androidx.appcompat.R.id.search_src_text)).check(matches(isDisplayed())).perform(typeText(query + ENTER));
     }
 
     private void checkActivityTitle(String query) {
         onView(allOf(withText(getStringResource(R.string.search_results) + StringUtils.SPACE + query),
-                withParent((withId(android.support.design.R.id.action_bar))))).check(matches(isDisplayed()));
+                withParent((withId(androidx.appcompat.R.id.action_bar))))).check(matches(isDisplayed()));
     }
 
     /**
