@@ -5,6 +5,7 @@ import android.util.Log;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -256,6 +257,7 @@ public class DbHelperTest {
     }
 
     @Test
+    @Ignore
     public void testGetRandomSignDoesNotRetrieveAnyOfTheLastFiveSigns() {
         final String name = "Test_Sign_" + UUID.randomUUID();
         final Sign testSignA = new Sign.Builder().setId(0).setName("name").setNameLocaleDe(name + "_de")

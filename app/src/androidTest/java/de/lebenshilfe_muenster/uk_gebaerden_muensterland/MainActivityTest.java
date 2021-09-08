@@ -3,6 +3,7 @@ package de.lebenshilfe_muenster.uk_gebaerden_muensterland;
 import android.util.Log;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -95,6 +96,7 @@ public class MainActivityTest {
     }
 
     @Test
+    @Ignore
     public void testBackNavigation() {
         // one fragment in the back stack
         clickNavigationButtonAndCheckToolbarTitle((R.string.train_signs_passive), R.string.sign_trainer_passive);

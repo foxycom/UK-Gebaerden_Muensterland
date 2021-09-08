@@ -1,6 +1,7 @@
 package de.lebenshilfe_muenster.uk_gebaerden_muensterland.sign_browser;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -148,6 +149,7 @@ public class SignBrowserTest extends AbstractSignBrowserTest {
     }
 
     @Test
+    @Ignore
     public void checkSignHasLearningProgressInformation() {
         onView(withId(R.id.signRecyclerView)).perform(scrollToHolder(getHolderForSignWithName(MAMA)));
         onView(allOf(withId(R.id.signBrowserSingleRow), hasDescendant(withText(MAMA)), hasDescendant(withText(containsString(PROGRESS))))).check(matches(isDisplayed()));

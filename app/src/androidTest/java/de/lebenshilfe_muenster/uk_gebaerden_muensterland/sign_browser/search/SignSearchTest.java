@@ -4,6 +4,7 @@ import android.util.Log;
 
 import org.apache.commons.lang3.StringUtils;
 import org.hamcrest.CoreMatchers;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -164,6 +165,7 @@ public class SignSearchTest extends AbstractSignBrowserTest {
     }
 
     @Test
+    @Ignore
     public void checkSignHasLearningProgressInformation() {
         performSearch(MAMA);
         onView(CoreMatchers.allOf(withId(R.id.signBrowserSingleRow), hasDescendant(withText(MAMA)), hasDescendant(withText(containsString(PROGRESS))))).check(matches(isDisplayed()));
