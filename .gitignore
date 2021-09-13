@@ -6,3 +6,10 @@
 /build
 /captures
 /app/release/app-release.aab
+
+# ABC
+traces
+*.testlog
+app-androidTest.apk
+app-instrumented.apk
+app-original.apk
