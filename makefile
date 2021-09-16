@@ -6,8 +6,7 @@ JAVA_OPTS=" -Dabc.instrument.fields.operations -Dabc.taint.android.intents -Dabc
 
 ADB := $(shell $(ABC) show-config  ANDROID_ADB_EXE | sed -e "s|ANDROID_ADB_EXE=||")
 
-# Create a list of log files
-ESPRESSO_TESTS := $(shell cat tests.txt | sed -e 's| |__|g' -e 's|^\(.*\)$$|\1.testlog|')
+ESPRESSO_TESTS := $(shell cat tests.txt | sed '/^[[:space:]]*$$/d' | sed -e 's| |__|g' -e 's|^\(.*\)$$|\1.testlog|')
 
 
 .PHONY: clean-gradle clean-all run-espresso-tests trace-espresso-tests
@@ -17,6 +16,9 @@ show :
 
 clean-gradle :
 	$(GW) clean
+
+list-all-tests :
+	echo $(ESPRESSO_TESTS) | tr " " "\n"
 
 clean-all :
 	$(RM) -v *.apk
@@ -76,14 +78,11 @@ espresso-tests.log : app-original.apk app-androidTest.apk running-emulator
 	# Once execution of the dependent target is over we tear down the emulator
 	export ABC_CONFIG=$(ABC_CFG) && $(ABC) stop-all-emulators
 	$(RM) running-emulator
+	touch .traced
 
 # Note: https://stackoverflow.com/questions/9052220/hash-inside-makefile-shell-call-causes-unexpected-behaviour
 %.testlog: app-androidTest.apk app-instrumented.apk running-emulator
-	$(eval ADB := $(shell $(ABC) show-config | grep "ANDROID_ADB_EXE" | sed 's|^.*=\(.*\)|\1|g'))
-	echo $(ADB)
 	$(eval FIRST_RUN := $(shell $(ADB) shell pm list packages | grep -c de.lebenshilfe_muenster.uk_gebaerden_muensterland))
-	echo $(FIRST_RUN)
-
 	@if [ "$(FIRST_RUN)" == "2" ]; then \
 		echo "Resetting the data of the apk"; \
 		$(ADB) shell pm clear de.lebenshilfe_muenster.uk_gebaerden_muensterland; \
@@ -101,11 +100,11 @@ espresso-tests.log : app-original.apk app-androidTest.apk running-emulator
 
 carve-all : .traced app-original.apk
 	export ABC_CONFIG=$(ABC_CFG) && \
-	$(ABC) carve-all app-original.apk traces app/src/carvedTest force-clean | tee carving.log
+	$(ABC) carve-all app-original.apk traces app/src/carvedTest force-clean 2>&1 | tee carving.log
 
 carve-cached-traces : app-original.apk
 	export ABC_CONFIG=$(ABC_CFG) && \
-		$(ABC) carve-all app-original.apk traces app/src/carvedTest force-clean | tee carving.log
+		$(ABC) carve-all app-original.apk traces app/src/carvedTest force-clean 2>&1 | tee carving.log
 
 # TODO We need to provide the shadows in some sort of generic way and avoid hardcoding them for each and every application, unless we can create them programmatically
 copy-shadows :
@@ -113,7 +112,7 @@ copy-shadows :
 
 # DO WE NEED THE SAME APPROACH AS ESPRESSO TESTS?
 run-all-carved-tests : app/src/carvedTest copy-shadows
-	$(GW) clean testDebugUnitTest -PcarvedTests | tee carvedTests.log
+	$(GW) clean testDebugUnitTest -PcarvedTests 2>&1 | tee carvedTests.log
 
 ### ### ### ### ### ### ###
 ### Coverage targets
