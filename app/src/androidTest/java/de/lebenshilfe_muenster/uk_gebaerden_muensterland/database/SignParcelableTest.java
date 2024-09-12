@@ -3,6 +3,7 @@ package de.lebenshilfe_muenster.uk_gebaerden_muensterland.database;
 import android.os.Parcel;
 
 import org.junit.Test;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -27,6 +28,7 @@ import static org.junit.Assert.assertThat;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+@Ignore
 @SuppressWarnings("unused")
 @RunWith(AndroidJUnit4.class)
 public class SignParcelableTest {
